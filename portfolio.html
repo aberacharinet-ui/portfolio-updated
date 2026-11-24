@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- SEO: edit title, description and the Open Graph values below -->
+<title>Charinet Abera – IT Specialists and inssss different aspects &amp; Database Administrator</title>
+<meta name="description" content="Portfolio of Charinet Abera, an IT Specialist and Database Administrator.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Charinet Abera – IT Specialist &amp; Database Administrator">
+<meta property="og:description" content="Fast, accessible websites for small businesses and startups.">
+<meta property="og:image" content="profile.png">
+<meta property="og:url" content="https://your-site.netlify.app/">
+<meta name="theme-color" content="#2b3fd9">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============ 1. DESIGN TOKENS (change colors & fonts here) ============ */
+:root {
+  --bg: #f3f5f2;          /* page background */
+  --surface: #ffffff;     /* cards */
+  --ink: #141a2e;         /* main text */
+  --muted: #4f5670;       /* secondary text (AA contrast on bg) */
+  --primary: #2b3fd9;     /* buttons, links */
+  --primary-ink: #ffffff; /* text on primary */
+  --secondary: #f2c230;   /* highlight accent */
+  --line: #d9ded8;
+  --font-head: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius: 14px;
+  --nav-h: 64px;
+}
+:root[data-theme="dark"] {
+  --bg: #0e1120; --surface: #171b30; --ink: #eceef8; --muted: #a7adc8;
+  --primary: #8fa0ff; --primary-ink: #0e1120; --line: #2b3050;
+}
+
+/* ============ 2. BASE ============ */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.65 var(--font-body); }
+h1, h2, h3 { font-family: var(--font-head); line-height: 1.1; margin: 0 0 .5em; letter-spacing: -.02em; }
+h2 { font-size: clamp(1.9rem, 4vw, 2.75rem); font-weight: 800; }
+h3 { font-size: 1.25rem; font-weight: 700; }
+p { margin: 0 0 1em; max-width: 62ch; }
+a { color: var(--primary); }
+img, svg { max-width: 100%; }
+:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; border-radius: 4px; }
+.wrap { width: min(1100px, 92%); margin-inline: auto; }
+section { padding: 5.5rem 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--primary); color: var(--primary-ink); padding: .5rem 1rem; z-index: 100; }
+.skip:focus { left: 8px; }
+
+/* Buttons */
+.btn { display: inline-block; padding: .8rem 1.5rem; border-radius: 999px; font: 600 1rem var(--font-body);
+  text-decoration: none; border: 2px solid var(--primary); cursor: pointer; transition: transform .15s, background .15s; }
+.btn-primary { background: var(--primary); color: var(--primary-ink); }
+.btn-ghost { background: transparent; color: var(--primary); }
+.btn:hover { transform: translateY(-2px); }
+
+/* ============ 3. NAVBAR ============ */
+.nav { position: fixed; inset: 0 0 auto 0; height: var(--nav-h); z-index: 50;
+  background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+.logo { font: 800 1.25rem var(--font-head); color: var(--ink); text-decoration: none; }
+.nav ul { display: flex; gap: 1.6rem; list-style: none; margin: 0; padding: 0; }
+.nav ul a { color: var(--muted); text-decoration: none; font-weight: 500; padding: .35rem 0; border-bottom: 2px solid transparent; }
+.nav ul a:hover { color: var(--ink); }
+.nav ul a.active { color: var(--ink); border-color: var(--secondary); }
+.nav-tools { display: flex; gap: .5rem; align-items: center; }
+.icon-btn { background: none; border: 1px solid var(--line); color: var(--ink); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.1rem; }
+.icon-btn:hover { border-color: var(--primary); }
+#menuBtn { display: none; }
+@media (max-width: 760px) {
+  #menuBtn { display: inline-block; }
+  .nav ul { position: absolute; top: var(--nav-h); left: 0; right: 0; flex-direction: column; gap: 0;
+    background: var(--bg); border-bottom: 1px solid var(--line); padding: .5rem 4%; display: none; }
+  .nav ul.open { display: flex; }
+  .nav ul a { display: block; padding: .8rem 0; }
+}
+
+/* ============ 4. HERO ============ */
+.hero { min-height: 100svh; display: flex; align-items: center; padding-top: var(--nav-h); }
+.hero h1 { font-size: clamp(3.2rem, 11vw, 8rem); font-weight: 800; letter-spacing: -.045em; margin-bottom: .2em; }
+.hero .role { font: 500 1.1rem var(--font-body); color: var(--muted); margin-bottom: .6rem; }
+.tagline { font: 500 clamp(1.2rem, 2.6vw, 1.7rem)/1.4 var(--font-head); min-height: 2.9em; max-width: 30ch; }
+.caret { display: inline-block; width: 3px; height: 1.1em; background: var(--secondary); vertical-align: -.15em; margin-left: 2px; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.hero .actions { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 1.5rem; }
+
+/* ============ 5. ABOUT ========== */
+.about-grid { display: grid; gap: 3rem; grid-template-columns: 1fr 1.4fr; align-items: start; }
+.ph { display: grid; place-items: center; color: var(--muted); font-size: .9rem; text-align: center;
+  background: repeating-linear-gradient(135deg, var(--surface) 0 14px, var(--bg) 14px 28px); border: 1px dashed var(--line); }
+.photo { aspect-ratio: 4/5; border-radius: var(--radius); }
+img.photo { width: 100%; height: auto; object-fit: cover; display: block; }
+.skills { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; padding: 0; margin: 1.2rem 0 0; }
+.skills li, .tags li { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: .25rem .9rem; font-size: .92rem; }
+@media (max-width: 800px) { .about-grid { grid-template-columns: 1fr; } .photo { max-width: 320px; } }
+
+/* ============ 6. PROJECTS ============ */
+.filters { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.5rem 0 2rem; }
+.filters button { font: 600 .95rem var(--font-body); padding: .5rem 1.1rem; border-radius: 999px; cursor: pointer;
+  background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.filters button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+  display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s, border-color .25s; }
+.card:hover, .card:focus-within { transform: translateY(-6px); border-color: var(--primary); box-shadow: 0 14px 30px -14px color-mix(in srgb, var(--primary) 45%, transparent); }
+.card .ph { aspect-ratio: 16/10; border: 0; border-bottom: 1px dashed var(--line); }
+.card .project-image { display: block; width: 100%; aspect-ratio: 16/10; object-fit: contain; background: var(--surface); border-bottom: 1px solid var(--line); }
+.card-body { padding: 1.3rem; display: flex; flex-direction: column; flex: 1; }
+.tags { display: flex; flex-wrap: wrap; gap: .4rem; list-style: none; padding: 0; margin: auto 0 1rem; }
+.tags li { font-size: .8rem; padding: .1rem .65rem; }
+.links { display: flex; gap: 1.2rem; font-weight: 600; }
+.card[hidden] { display: none; }
+
+/* ============ 7. TIMELINE ============ */
+.timeline { list-style: none; margin: 2rem 0 0; padding: 0 0 0 1.6rem; border-left: 2px solid var(--line); }
+.timeline li { position: relative; padding-bottom: 2rem; }
+.timeline li::before { content: ""; position: absolute; left: calc(-1.6rem - 7px); top: .45rem; width: 12px; height: 12px;
+  border-radius: 50%; background: var(--secondary); border: 2px solid var(--bg); box-shadow: 0 0 0 2px var(--line); }
+.timeline time { font-weight: 600; color: var(--muted); font-size: .92rem; }
+.timeline h3 { margin: .1rem 0; }
+
+/* ============ 8. TESTIMONIALS ============ */
+blockquote { margin: 0; background: var(--surface); border: 1px solid var(--line); border-left: 5px solid var(--secondary);
+  border-radius: var(--radius); padding: 1.5rem; height: 100%; }
+blockquote p { font: 500 1.1rem/1.5 var(--font-head); }
+blockquote footer { color: var(--muted); font-size: .92rem; }
+
+/* ============ 9. CONTACT ============ */
+.contact-grid { display: grid; gap: 3rem; grid-template-columns: 1fr 1.2fr; }
+form { display: grid; gap: 1.1rem; }
+label { font-weight: 600; display: block; margin-bottom: .3rem; }
+input, textarea { width: 100%; padding: .8rem 1rem; font: inherit; color: var(--ink); background: var(--surface);
+  border: 1px solid var(--line); border-radius: 10px; }
+textarea { min-height: 150px; resize: vertical; }
+input[aria-invalid="true"], textarea[aria-invalid="true"] { border-color: #c0262d; }
+.err { color: #c0262d; font-size: .88rem; min-height: 1.2em; margin: .25rem 0 0; }
+:root[data-theme="dark"] .err { color: #ff8a90; }
+.status { padding: 1rem 1.2rem; border-radius: 10px; background: color-mix(in srgb, var(--secondary) 30%, var(--surface)); font-weight: 600; }
+.socials { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: .6rem; font-weight: 600; }
+.hp { position: absolute; left: -9999px; } /* honeypot field against spam bots */
+@media (max-width: 800px) { .contact-grid { grid-template-columns: 1fr; } }
+
+/* ============ 10. FOOTER & BACK TO TOP ============ */
+footer.site { border-top: 1px solid var(--line); padding: 2rem 0; color: var(--muted); font-size: .92rem; }
+#toTop { position: fixed; right: 1.2rem; bottom: 1.2rem; opacity: 0; pointer-events: none; transition: opacity .25s;
+  background: var(--primary); color: var(--primary-ink); border-color: var(--primary); }
+#toTop.show { opacity: 1; pointer-events: auto; }
+
+/* ============ 11. SCROLL REVEAL (JS adds .in) ============ */
+.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s, transform .6s; }
+.js .reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ===== NAVBAR ===== -->
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#home">Charinet Abera</a>
+    <nav aria-label="Main">
+      <ul id="menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#testimonials">Kind words</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-tools">
+      <button class="icon-btn" id="themeBtn" aria-label="Switch to dark mode">☾</button>
+      <button class="icon-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<!-- ===== HERO ===== -->
+<section class="hero" id="home" data-section>
+  <div class="wrap">
+    <p class="role">IT Specialist &amp; Database Administrator</p>
+    <h1>Charinet Abera</h1>
+    <!-- Typed text is hidden from screen readers; they get the full sentence instead -->
+    <p class="tagline"><span id="typed" aria-hidden="true"></span><span class="caret" aria-hidden="true"></span>
+      <span class="sr-only" id="taglineFull">I build fast, accessible websites that help small businesses get found.</span></p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#projects">View my work</a>
+      <a class="btn btn-ghost" href="#contact">Contact me</a>
+      <button type="button" class="btn btn-ghost" id="cvBtn" aria-live="polite">Download CV</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" data-section>
+  <div class="wrap about-grid">
+    <img class="photo reveal" src="profile.png" alt="Manchester City crest">
+    <div class="reveal">
+      <h2>About me</h2>
+      <p>I’m a web developer and designer with five years of experience turning ideas into clear, fast websites. I care about readable code, honest design, and sites that work for everyone.</p>
+      <p>When I’m not building, I’m sketching interfaces, hiking, or reading about typography. I’m currently open to freelance projects and full-time roles.</p>
+      <h3>Skills</h3>
+      <ul class="skills">
+        <li>HTML &amp; CSS</li><li>JavaScript</li><li>React</li><li>Accessibility</li>
+        <li>Figma</li><li>Node.js</li><li>SEO</li><li>Git</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section id="projects" data-section>
+  <div class="wrap">
+    <h2 class="reveal">Selected projects</h2>
+    <div class="filters reveal" role="group" aria-label="Filter projects by category">
+      <button type="button" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" data-filter="web" aria-pressed="false">Websites</button>
+      <button type="button" data-filter="app" aria-pressed="false">Web apps</button>
+      <button type="button" data-filter="design" aria-pressed="false">Design</button>
+    </div>
+    <div class="grid" id="projectGrid">
+      <!-- Copy a card to add a project. data-cat must match a filter button's data-filter -->
+      <article class="card reveal" data-cat="web">
+        <img class="project-image" src="project-bakery.svg" alt="Sample bakery website design with pastry cards and warm colors">
+        <div class="card-body">
+          <h3>Morning Bakehouse</h3>
+          <p>A fast marketing site for a local bakery, with online ordering and a 98 Lighthouse score.</p>
+          <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+          <div class="links"><a href="#">Live site</a><a href="#">GitHub</a></div>
+        </div>
+      </article>
+      <article class="card reveal" data-cat="app">
+        <img class="project-image" src="project-taskboard.svg" alt="Sample task board interface with three columns of tasks">
+        <div class="card-body">
+          <h3>Team Task Board</h3>
+          <p>A task-tracking app for small teams with drag-and-drop boards and offline support.</p>
+          <ul class="tags"><li>React</li><li>Node.js</li><li>PostgreSQL</li></ul>
+          <div class="links"><a href="#">Live site</a><a href="#">GitHub</a></div>
+        </div>
+      </article>
+      <article class="card reveal" data-cat="design">
+        <img class="project-image" src="project-brand.svg" alt="Sample brand identity board with typography and color swatches">
+        <div class="card-body">
+          <h3>Forma Design System</h3>
+          <p>A brand identity and design system for a fitness startup, from logo to component library.</p>
+          <ul class="tags"><li>Figma</li><li>Illustrator</li></ul>
+          <div class="links"><a href="#">Case study</a><a href="#">GitHub</a></div>
+        </div>
+      </article>
+      <article class="card reveal" data-cat="web app">
+        <img class="project-image" src="usecase.jpg" alt="Use-case diagram showing admin and user actions in the management system">
+        <div class="card-body">
+          <h3>Admin &amp; User Management System</h3>
+          <p>A role-based system concept covering account access, record creation and updates, and user viewing.</p>
+          <ul class="tags"><li>System Design</li><li>Use-Case Diagram</li><li>Access Control</li></ul>
+          <div class="links"><a href="#contact">Ask about this project</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPERIENCE / EDUCATION ===== -->
+<section id="experience" data-section>
+  <div class="wrap">
+    <h2 class="reveal">Experience &amp; education</h2>
+    <ol class="timeline reveal">
+      <li><time>2023 – Present</time><h3>Freelance web developer</h3><p>Building sites and web apps for small businesses and startups.</p></li>
+      <li><time>2021 – 2023</time><h3>Front-end developer, Company Name</h3><p>Shipped features for a product used by 40,000 customers and led the accessibility audit.</p></li>
+      <li><time>2018 – 2021</time><h3>BSc Computer Science, University Name</h3><p>Focused on human-computer interaction and web technologies.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section id="testimonials" data-section>
+  <div class="wrap">
+    <h2 class="reveal">Kind words</h2>
+    <div class="grid">
+      <blockquote class="reveal"><p>“Delivered ahead of schedule and the site loads instantly. Our bookings went up within a month.”</p><footer>Client Name, Bakery Owner</footer></blockquote>
+      <blockquote class="reveal"><p>“Clear communication, thoughtful design, and clean code our team could pick up right away.”</p><footer>Colleague Name, Product Manager</footer></blockquote>
+      <blockquote class="reveal"><p>“Took a vague idea and turned it into a product we’re proud to show customers.”</p><footer>Client Name, Startup Founder</footer></blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" data-section>
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <h2>Let’s work together</h2>
+      <p>Have a project in mind or a role to fill? Send a message and I’ll reply within two working days.</p>
+      <ul class="socials">
+        <li><a href="https://www.linkedin.com/in/your-handle" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/your-handle" rel="noopener">GitHub</a></li>
+        <li><a href="mailto:you@example.com">you@example.com</a></li>
+      </ul>
+    </div>
+    <!-- data-netlify makes this form work on Netlify with no backend. See guide for Formspree. -->
+    <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate class="reveal">
+      <input type="hidden" name="form-name" value="contact">
+      <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <div><label for="name">Name</label><input id="name" name="name" autocomplete="name" required><p class="err" id="name-err"></p></div>
+      <div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required><p class="err" id="email-err"></p></div>
+      <div><label for="message">Message</label><textarea id="message" name="message" required></textarea><p class="err" id="message-err"></p></div>
+      <button class="btn btn-primary" type="submit">Send message</button>
+      <p class="status" id="formStatus" role="status" tabindex="-1" hidden></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="site"><div class="wrap">© <span id="year">2026</span> Charinet Abera. All rights reserved.</div></footer>
+<button class="icon-btn" id="toTop" aria-label="Back to top">↑</button>
+
+<script>
+/* ============ CONFIG: edit these ============ */
+const TAGLINE = "I build fast, accessible websites that help small businesses get found.";
+// Leave empty to use Netlify Forms. For Formspree, paste e.g. "https://formspree.io/f/xxxxxxx"
+const FORM_ENDPOINT = "";
+
+document.documentElement.classList.add("js");
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+$("#year").textContent = new Date().getFullYear();
+
+/* ---------- Theme toggle (remembers choice, defaults to system setting) ---------- */
+const root = document.documentElement, themeBtn = $("#themeBtn");
+function setTheme(t) {
+  root.dataset.theme = t;
+  themeBtn.textContent = t === "dark" ? "☀" : "☾";
+  themeBtn.setAttribute("aria-label", t === "dark" ? "Switch to light mode" : "Switch to dark mode");
+}
+let saved = null;
+try { saved = localStorage.getItem("theme"); } catch (e) {}
+setTheme(saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
+themeBtn.addEventListener("click", () => {
+  const next = root.dataset.theme === "dark" ? "light" : "dark";
+  setTheme(next);
+  try { localStorage.setItem("theme", next); } catch (e) {}
+});
+
+/* ---------- Mobile menu ---------- */
+const menu = $("#menu"), menuBtn = $("#menuBtn");
+function toggleMenu(open) {
+  menu.classList.toggle("open", open);
+  menuBtn.setAttribute("aria-expanded", open);
+  menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+}
+menuBtn.addEventListener("click", () => toggleMenu(!menu.classList.contains("open")));
+menu.addEventListener("click", e => { if (e.target.tagName === "A") toggleMenu(false); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") toggleMenu(false); });
+
+/* ---------- Typing animation ---------- */
+const typed = $("#typed");
+$("#taglineFull").textContent = TAGLINE;
+if (reduceMotion) { typed.textContent = TAGLINE; }
+else {
+  let i = 0;
+  (function type() {
+    typed.textContent = TAGLINE.slice(0, ++i);
+    if (i < TAGLINE.length) setTimeout(type, 38);
+  })();
+}
+
+/* ---------- Active nav link ---------- */
+const links = $$("#menu a");
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting) links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + en.target.id));
+  });
+}, { rootMargin: "-45% 0px -50% 0px" });
+$$("[data-section]").forEach(s => spy.observe(s));
+
+/* ---------- Scroll reveal ---------- */
+const revealer = new IntersectionObserver(entries => {
+  entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); revealer.unobserve(en.target); } });
+}, { threshold: .12 });
+$$(".reveal").forEach(el => revealer.observe(el));
+
+/* ---------- Project filter ---------- */
+const filterBtns = $$(".filters button"), cards = $$("#projectGrid .card");
+filterBtns.forEach(btn => btn.addEventListener("click", () => {
+  filterBtns.forEach(b => b.setAttribute("aria-pressed", b === btn));
+  const f = btn.dataset.filter;
+  cards.forEach(c => {
+    c.hidden = !(f === "all" || c.dataset.cat.split(" ").includes(f));
+    c.classList.add("in");
+  });
+}));
+
+/* ---------- Back to top ---------- */
+const toTop = $("#toTop");
+addEventListener("scroll", () => toTop.classList.toggle("show", scrollY > 600), { passive: true });
+toTop.addEventListener("click", () => scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" }));
+
+/* ---------- Download CV ---------- */
+const CV_FILE = "Charinet Abera - CV.pdf";
+const CV = {
+  name: "Charinet Abera",
+  title: "IT Specialist & Database Administrator",
+  contact: "",
+  blocks: [
+    ["h", "Profile"],
+    ["p", "IT Specialist and Database Administrator."],
+    ["h", "Areas of Focus"],
+    ["p", "IT support and database administration."],
+    ["h", "Selected Project"],
+    ["row", "Admin & User Management System", "System Design"],
+    ["p", "Role-based system concept covering account access, record creation and updates, and user viewing."],
+    ["h", "References"],
+    ["p", "Available upon request."]
+  ]
+};
+
+function buildCV(JsPDF) {
+  const d = new JsPDF({ unit: "mm", format: "a4" });
+  const W = 210, H = 297, M = 18, CW = W - 2 * M, PT = 0.3528;
+  let y = M;
+  d.setProperties({ title: CV.name + " - CV", author: CV.name });
+  const need = h => { if (y + h > H - M) { d.addPage(); y = M; } };
+  function text(t, o = {}) {
+    const { size = 10.5, style = "normal", color = [17, 17, 17], x = M, w = CW } = o;
+    d.setFont("helvetica", style); d.setFontSize(size); d.setTextColor(...color);
+    const lh = size * PT * 1.45;
+    d.splitTextToSize(t, w).forEach(line => { need(lh); d.text(line, x, y + size * PT); y += lh; });
+  }
+  text(CV.name, { size: 24, style: "bold" });
+  text(CV.title, { size: 12.5, color: [43, 63, 217] });
+  if (CV.contact) {
+    y += 1;
+    text(CV.contact, { size: 9.5, color: [70, 70, 70] });
+  }
+  CV.blocks.forEach(([type, a, b]) => {
+    if (type === "h") {
+      need(14); y += 5;
+      text(a, { size: 11, style: "bold" });
+      d.setDrawColor(43, 63, 217); d.setLineWidth(0.5); d.line(M, y, W - M, y); y += 2;
+    } else if (type === "p") {
+      text(a); y += 0.5;
+    } else if (type === "row") {
+      need(12); y += 2;
+      const top = y;
+      text(a, { style: "bold", w: CW - 50 });
+      d.setFont("helvetica", "normal"); d.setFontSize(10);
+      d.text(b, W - M, top + 10.5 * PT, { align: "right" });
+    }
+  });
+  d.save(CV_FILE);
+}
+
+function loadJsPDF() {
+  if (window.jspdf && window.jspdf.jsPDF) return Promise.resolve();
+  return new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
+    script.onload = () => {
+      if (window.jspdf && window.jspdf.jsPDF) resolve();
+      else reject(new Error("jsPDF loaded without its API"));
+    };
+    script.onerror = () => reject(new Error("Could not load jsPDF"));
+    document.head.appendChild(script);
+  });
+}
+
+const cvBtn = $("#cvBtn");
+cvBtn.addEventListener("click", async () => {
+  cvBtn.disabled = true;
+  cvBtn.textContent = "Preparing PDF…";
+  try {
+    await loadJsPDF();
+    buildCV(window.jspdf.jsPDF);
+    cvBtn.textContent = "Download started";
+  } catch (err) {
+    console.error("CV download failed:", err);
+    cvBtn.textContent = "Couldn’t create PDF. Try again";
+  } finally {
+    cvBtn.disabled = false;
+    setTimeout(() => { cvBtn.textContent = "Download CV"; }, 3500);
+  }
+});
+Set-Location 'C:\path\to\your\project'
+git rev-parse --show-toplevel
+git status --short
+/* ---------- Contact form: validation + submit ---------- */
+const form = $("#contactForm"), status = $("#formStatus");
+const rules = {
+  name: v => v.trim().length >= 2 || "Enter your name.",
+  email: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || "Enter a valid email address, like name@example.com.",
+  message: v => v.trim().length >= 10 || "Write at least 10 characters so I know how to help."
+};
+function check(field) {
+  const res = rules[field.name](field.value), ok = res === true;
+  field.setAttribute("aria-invalid", !ok);
+  field.setAttribute("aria-describedby", field.id + "-err");
+  $("#" + field.id + "-err").textContent = ok ? "" : res;
+  return ok;
+}
+Object.keys(rules).forEach(n => form.elements[n].addEventListener("blur", e => check(e.target)));
+
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  const fields = Object.keys(rules).map(n => form.elements[n]);
+  const bad = fields.filter(f => !check(f));
+  if (bad.length) { bad[0].focus(); return; }
+  const btn = form.querySelector("button[type=submit]");
+  btn.disabled = true; btn.textContent = "Sending…";
+  try {
+    // Opened as a local file there is no server, so just demo the success state.
+    if (location.protocol !== "file:") {
+      const body = new URLSearchParams(new FormData(form));
+      const res = await fetch(FORM_ENDPOINT || "/", {
+        method: "POST",
+        headers: FORM_ENDPOINT ? { Accept: "application/json" } : { "Content-Type": "application/x-www-form-urlencoded" },
+        body: FORM_ENDPOINT ? new FormData(form) : body.toString()
+      });
+      if (!res.ok) throw new Error(res.status);
+    }
+    form.reset();
+    status.textContent = "Message sent. Thanks! I’ll reply within two working days.";
+  } catch (err) {
+    status.textContent = "Your message didn’t send. Check your connection and try again, or email you@example.com.";
+  }
+  status.hidden = false; status.focus();
+  btn.disabled = false; btn.textContent = "Send message";
+});
+</script>
+</body>
+</html>
